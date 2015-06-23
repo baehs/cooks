@@ -1,3 +1,3 @@
 $(function () {
-	$("#writeForm_Modal").load('community/writeForm.html');
+	$("#writeForm_Modal").load('writeForm.html');
 });

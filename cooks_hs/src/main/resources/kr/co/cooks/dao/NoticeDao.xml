@@ -19,6 +19,11 @@
 		insert into notice_board values(notice_seq.nextval,#{id},#{no_Title},#{no_Content},sysdate,#{no_Hit})
 	</insert>
 	
+	<update id="noticeHit" parameterType="Integer">
+		update notice_board set no_hit=no_hit+1
+		where no_num=#{no_num}
+	</update>
+	
 	<select id="noticeContent" parameterType="Integer" resultType="noticeVO">
 		select * from notice_board where no_num=#{no_num}
 	</select>

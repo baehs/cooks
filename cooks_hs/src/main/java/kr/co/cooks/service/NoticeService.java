@@ -55,7 +55,11 @@ public class NoticeService {
 		noticeDao.noticeWrite(noticeVO);
 	}
 	
-	public NoticeVO noticeContent(int no_num){
+	public void noticeHit(int no_num){
+		noticeDao.noticeHit(no_num);
+	}
+	
+	public NoticeVO noticeContent(int no_num, NoticeVO noticeVO){
 		return noticeDao.noticeContent(no_num);
 	}
 	
@@ -70,7 +74,4 @@ public class NoticeService {
 	public void noticeDelete(int no_num){
 		noticeDao.noticeDelete(no_num);
 	}
-	
-	
-	
 }

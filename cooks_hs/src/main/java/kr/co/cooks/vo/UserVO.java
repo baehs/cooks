@@ -61,8 +61,4 @@ public class UserVO {
 	public void setMileage(int mileage) {
 		this.mileage = mileage;
 	}
-	
-	
-	
-	
 }

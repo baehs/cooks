@@ -35,6 +35,28 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+    	addHit()
+    });
+    
+    function addHit() {
+		$.ajax({
+			type:"POST",
+			url:"noticeHit",
+			async:true,
+			dataType:"json",
+			data : {
+				no_num : $('#no_num').val(),
+			},
+			success : {}
+		});
+	}
+    
+    
+    </script>
+    
 </head>
 
 <body>

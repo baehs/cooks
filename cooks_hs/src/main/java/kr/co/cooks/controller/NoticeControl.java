@@ -59,13 +59,21 @@ public class NoticeControl {
 	}
 	
 	@RequestMapping(value="/NoticeContent.app")
-	public ModelAndView NoticeContent(HttpServletRequest req, HttpServletResponse res){
+	public ModelAndView NoticeContent(NoticeVO noticeVO, HttpServletRequest req, HttpServletResponse res){    
 		ModelAndView mav = new ModelAndView();
 		int no_num=Integer.parseInt(req.getParameter("no_num"));
-		noticeVO = noticeService.noticeContent(no_num);
+		noticeVO = noticeService.noticeContent(no_num, noticeVO);
 		mav.addObject("noticeVO", noticeVO);
 		mav.addObject("pageNum", req.getParameter("pageNum"));
 		mav.setViewName("board_notice/notice_content");
+		return mav;
+	}
+	
+	@RequestMapping(value="noticeHit.app")
+	public ModelAndView NoticeHit(int no_num){
+		ModelAndView mav = new ModelAndView();
+		noticeService.noticeHit(no_num);
+		mav.setViewName("JSON");
 		return mav;
 	}
 	

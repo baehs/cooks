@@ -9,6 +9,7 @@ public interface NoticeDao {
 	public int getNoticeArticleCount();
 	public List<NoticeVO> getNoticeArticles(HashMap<String, Integer> pageing);
 	public void noticeWrite(NoticeVO noticeVO);
+	public void noticeHit(int no_num);
 	public NoticeVO noticeContent(int no_num);
 	public NoticeVO getNoticeUpdate(int no_num);
 	public void noticeUpdate(NoticeVO noticeVO);

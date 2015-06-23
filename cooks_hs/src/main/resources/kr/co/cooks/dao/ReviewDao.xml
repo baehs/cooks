@@ -4,6 +4,18 @@
 
 <mapper namespace="kr.co.cooks.dao.ReviewDao">
 
+	<select id="totalSize" resultType="Integer">
+		select count(RE_NUM) FROM REVIEW
+	</select>
+	
+	<select id="getReviewList" parameterType="HashMap" resultType="reviewVO">
+		select RE_NUM, ID, RE_TITLE, RE_CONTENT, RE_DATE, RE_GRADE, RE_FNAME, RE_DEPT, RE_POSITION, F_NUM
+		FROM REVIEW
+		ORDER BY RE_NUM
+		<if test="pageSize > 0">
+			limit #{startRow}, #{pageSize}
+		</if>
+	</select>
 	
 
 </mapper>

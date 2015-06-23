@@ -135,6 +135,7 @@
 				
 			<div>
 				<form action="/cooks/NoticeWrite.app" method="post">
+				<input type="hidden" id="no_hit" name="no_Hit">
 					<div class="form-group">
 						<label for="exampleInputEmail1">아이디</label>
 						<input type="text" class="form-control" id="id" name="id" placeholder="아이디">
@@ -150,10 +151,10 @@
 						<textarea class="form-control" rows="3" cols="7" id="no_Content" name="no_Content" placeholder="내용을 입력하세요."></textarea>
 					</div>
 					
-					<div class="form-group">
-						<label for="exampleInputFile">조회수</label>
-						<input type="number" class="form-control" id="no_Hit" name="no_Hit" placeholder="HIT">
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="exampleInputFile">조회수</label> -->
+<!-- 						<input type="number" class="form-control" id="no_Hit" name="no_Hit" placeholder="HIT"> -->
+<!-- 					</div> -->
 					<table>
 						<tr>
 				<td><input type="submit" value="글쓰기"></td>

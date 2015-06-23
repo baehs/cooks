@@ -3,13 +3,14 @@ package kr.co.cooks.controller;
 import javax.servlet.http.HttpSession;
 
 import kr.co.cooks.service.UserService;
+import kr.co.cooks.vo.UserVO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,49 +18,78 @@ public class LoginControl {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginControl.class);
 	
-	@Autowired UserService loginService;
+	@Autowired UserService userService;
+	UserVO userVO;
 	
 /*	페이지 이동만 필요할 경우 */
   
-	@RequestMapping(value = "/home.app")
+	@RequestMapping(value = "/cooksMain.app")
 	public ModelAndView mainForm() {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("login");
+		mav.setViewName("main/main");
 		
 		return mav;
 	}
 	
 	
-	@RequestMapping(value = "/login.app")
-	public ModelAndView login(@RequestParam String email, String password) {
-
-		System.out.println("이메일 : " +email);
-		System.out.println("비밀번호 : " +password);
+	@RequestMapping(value = "/login.app", method=RequestMethod.POST)
+	public ModelAndView login(String email, String password, HttpSession session) {
 
 		ModelAndView mav = new ModelAndView();
-
-		int status = loginService.validation_Check(email, password);
-
-		if(status==1) {
-
-			//session.setAttribute("email", email);
-
-			mav.setViewName("home");
-
-		} else if(status==2) {
-			System.out.println("패스워드가 틀렸습니다.");
-			mav.setViewName("home");
-
-		} else {
-			System.out.println("회원이 아닙니다.");
-			mav.setViewName("home");
+		
+		userVO = userService.validation_Check(email, password);
+		
+		if(userVO != null) {
+			session.setAttribute("loginUser", userVO);
+			mav.addObject("status", "success");
 			
+		} else {
+			session.invalidate();
+			mav.addObject("status", "fail");
 		}
-
+		
+		mav.setViewName("JSON");
+		
 		return mav;
+	}
+	
+	@RequestMapping(value = "/loginUser.app")
+	public ModelAndView loginUser(HttpSession session) {
+		
+		
+		System.out.println("session 정보 : " +session.getAttribute("loginUser"));
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(session.getAttribute("loginUser") != null) {
+			mav.addObject("status", "success");
+			mav.addObject("loginUser", session.getAttribute("loginUser"));
+			
+		} else {
+			mav.addObject("status", "fail");
+		}
+		
+		mav.setViewName("JSON");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/logoutUser.app")
+	public ModelAndView logoutUser(HttpSession session) {
+		
+		session.invalidate(); // session 끊어주는 메서드.
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
+		
+		return mav;
+		
 	}
 
 	
 }
+	

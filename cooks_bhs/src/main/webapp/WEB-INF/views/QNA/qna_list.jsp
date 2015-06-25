@@ -63,7 +63,7 @@
 						</button>
 					</p>
 
-					<h2 class="sub-header">공지사항</h2>
+					<h2 class="sub-header">Q&A</h2>
 					<b>글목록(전체 글:${count})</b>
 					<div class="table-responsive">
 						<table class="table table-striped">
@@ -71,29 +71,25 @@
 								<tr>
 									<th style="width: 10%;">번호</th>
 									<th>제 목</th>
-									<th style="width: 15%;">작성자</th>
 									<th style="width: 15%;">날짜</th>
-									<th style="width: 15%;">조회수</th>
+									<th style="width: 15%;">작성자</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="noticeVO" items="${noticelist}">
+								<c:forEach var="qnaVO" items="${qnaList}">
 									<tr>
-										<td><c:out value="${noticeVO.no_Num}"/></td>
-										<td><a href="/cooks/NoticeContent.app?no_Num=${noticeVO.no_Num}&pageNum=${pageNum}">${noticeVO.no_Title}</a></td>
+										<td><c:out value="${qnaVO.q_Num}"/></td>
+										<td><a href="/cooks/QNAContent.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">${qnaVO.q_Title}</a></td>
 <%-- 										<td>${noticeVO.no_Title}</td> --%>
 <%-- 										<td>${loginUser.name}</td> --%>
-										<td>${noticeVO.id}</td>
-										<td>${noticeVO.no_Date}</td>
-										<td>${noticeVO.no_Hit}</td>
+										<td>${qnaVO.id}</td>
+										<td>${qnaVO.q_Date}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 						
-						<c:if test="${userLevel == 2}"> 
- 							<a href="/cooks/NoticeWriteForm.app">글쓰기</a> 
- 						</c:if>
+ 							<a href="/cooks/QNAWriteForm.app">글쓰기</a>
 						
 						
 						<!-- Button trigger modal -->

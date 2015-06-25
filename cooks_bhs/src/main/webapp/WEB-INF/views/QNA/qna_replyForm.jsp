@@ -13,7 +13,7 @@
     <meta name="author" content="">
 
     <title>Dash Board-notice</title>
-   
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -28,11 +28,13 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
-    <script src="user/user.js"></script>
+    
+    
 </head>
 
 <body>
-<jsp:include page="../common/navTop.jsp"/>
+
+ <jsp:include page="../common/navTop.jsp"/>
 
     <!-- Page Content -->
     <div class="container">
@@ -63,41 +65,43 @@
 						</button>
 					</p>
 
-					<h2 class="sub-header">공지사항</h2>
-					<b>글목록(전체 글:${count})</b>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th style="width: 10%;">번호</th>
-									<th>제 목</th>
-									<th style="width: 15%;">작성자</th>
-									<th style="width: 15%;">날짜</th>
-									<th style="width: 15%;">조회수</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="noticeVO" items="${noticelist}">
-									<tr>
-										<td><c:out value="${noticeVO.no_Num}"/></td>
-										<td><a href="/cooks/NoticeContent.app?no_Num=${noticeVO.no_Num}&pageNum=${pageNum}">${noticeVO.no_Title}</a></td>
-<%-- 										<td>${noticeVO.no_Title}</td> --%>
-<%-- 										<td>${loginUser.name}</td> --%>
-										<td>${noticeVO.id}</td>
-										<td>${noticeVO.no_Date}</td>
-										<td>${noticeVO.no_Hit}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						
-						<c:if test="${userLevel == 2}"> 
- 							<a href="/cooks/NoticeWriteForm.app">글쓰기</a> 
- 						</c:if>
-						
+					<h2 class="sub-header">Q&A</h2>
+				
+			<div>
+				<form action="/cooks/QNAReply.app" method="post">
+				<input type="hidden" name="pageNum" value="${pageNum}">                 
+   				<input type="hidden" name="q_dept" value="${q_dept}">
+    			<input type="hidden" name="q_position" value="${q_position}">
+				<input type="hidden" name="userId" value="${loginUser.id}">
+					<div class="form-group">
+						<label for="id">글쓴이 : </label> ${loginUser.name}
+						<hr>
+					</div>
+				
+					<div class="form-group">
+						<label for="exampleInputEmail1">제 목</label>
+						<input type="text" class="form-control" id="q_Title" name="q_Title" placeholder="제목을 입력하세요.">
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">내 용</label>
+						<textarea class="form-control" rows="3" cols="7" id="q_Content" name="q_Content" placeholder="내용을 입력하세요."></textarea>
+					</div>
+				
+					<table>
+						<tr>
+				<td><input type="submit" value="글쓰기"></td>
+				<td><input type="reset" value="글쓰기취소"></td>
+			</tr>
+					</table>
+					
+				</form>
+				
+				</div>	
+				
 						
 						<!-- Button trigger modal -->
-					<!--      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeForm" data-backdrop="static">글쓰기</button> -->
+<!-- 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeForm" data-backdrop="static">글쓰기</button> -->
 					</div>
 
 				</div>
@@ -105,7 +109,9 @@
 			</div>
 
 		</div> <!-- row -->
-	</div> <!-- /container -->
+
+	
+	<!-- /container -->
 
 
 	<div class="container">

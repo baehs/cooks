@@ -7,6 +7,7 @@
 		<typeAlias alias="user" type="kr.co.cooks.vo.UserVO"/>
 		<typeAlias alias="review" type="kr.co.cooks.vo.ReviewVO"/>
 		<typeAlias alias="notice" type="kr.co.cooks.vo.NoticeVO"/>
+		<typeAlias alias="qna" type="kr.co.cooks.vo.QNAVO"/>
 	</typeAliases>
 	
 </configuration>

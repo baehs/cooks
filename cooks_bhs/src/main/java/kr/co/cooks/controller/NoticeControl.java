@@ -43,12 +43,10 @@ public class NoticeControl {
 			userVO = (UserVO)session.getAttribute("loginUser");
 			mav.addObject("userLevel", userVO.getUser_Level());
 		}
-		
 		mav.addObject("pageNum", pageNum);
 		mav.addObject("noticelist", (List<NoticeVO>)hm.get("noticelist"));
 		mav.addObject("count", hm.get("count"));
 		mav.addObject("pagecode", (String)hm.get("pagecode"));
-		
 		mav.setViewName("board_notice/notice");
 		
 		return mav;	
@@ -71,17 +69,19 @@ public class NoticeControl {
 	@RequestMapping(value="/NoticeContent.app")
 	public ModelAndView NoticeContent(NoticeVO noticeVO, HttpServletRequest req, HttpServletResponse res, HttpSession session){    
 		
-		userVO = (UserVO)session.getAttribute("loginUser");
+		//userVO = (UserVO)session.getAttribute("loginUser");
 		
 		ModelAndView mav = new ModelAndView();
 		
 		int no_Num=Integer.parseInt(req.getParameter("no_Num"));
 		
+		if((UserVO)session.getAttribute("loginUser") != null){
+			mav.addObject("userLevel", userVO.getUser_Level());
+		}
 		noticeVO = noticeService.noticeContent(no_Num, noticeVO);
 		
 		mav.addObject("noticeVO", noticeVO);
 		mav.addObject("pageNum", req.getParameter("pageNum"));
-		mav.addObject("userLevel", userVO.getUser_Level());
 		mav.setViewName("board_notice/notice_content");
 		return mav;
 	}

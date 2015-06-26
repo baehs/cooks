@@ -89,7 +89,7 @@
 							</tbody>
 						</table>
 						
- 							<a href="/cooks/QNAWriteForm.app">글쓰기</a>
+ 							<a href="/cooks/QNAWriteForm.app?pageNum=${pageNum }">글쓰기</a>
 						
 						
 						<!-- Button trigger modal -->

@@ -68,10 +68,13 @@
 					<h2 class="sub-header">Q&A</h2>
 				
 			<div>
-				<form action="/cooks/QNAReply.app" method="post">
+			
+				<form action="/cooks/QuestionReply.app" method="post">
+				<input type="hidden" id="q_Num" value="${q_Num}">
 				<input type="hidden" name="pageNum" value="${pageNum}">                 
-   				<input type="hidden" name="q_dept" value="${q_dept}">
-    			<input type="hidden" name="q_position" value="${q_position}">
+   				<input type="hidden" name="q_Dept" value="${qnaVO.q_Dept}">
+    			<input type="hidden" name="q_Position" value="${qnaVO.q_Position}">
+    			<input type="hidden" id="f_Num" value="${qnaVO.f_Num}">
 				<input type="hidden" name="userId" value="${loginUser.id}">
 					<div class="form-group">
 						<label for="id">글쓴이 : </label> ${loginUser.name}
@@ -98,7 +101,6 @@
 				</form>
 				
 				</div>	
-				
 						
 						<!-- Button trigger modal -->
 <!-- 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeForm" data-backdrop="static">글쓰기</button> -->
@@ -131,6 +133,17 @@
     <!-- /.container -->
     
 <jsp:include page="../common/sign_modal.jsp"/>
+    
+    <script type="text/javascript">
+    
+    $(function() {
+    	
+    	console.log("QNA q_Num 정보 : ", ${q_Num} );
+    	console.log("QNA q_Dept 정보 : ", ${q_Dept} );
+    	console.log("QNA q_Position 정보 : ", ${q_Position} );
+    	console.log("QNA pageNum 정보 : ", ${pageNum} );
+    });
+    </script>
     
 </body>
 </html>

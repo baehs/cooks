@@ -15,8 +15,8 @@
 			where rm between #{startRow} and #{endRow}
 	</select>
 	
-	<insert id="qnaWrite" parameterType="HashMap">
-		insert into QNA values(qna_seq.nextval,#{userId},#{qnaVO.q_Title},#{qnaVO.q_Content},sysdate,0,0,7)
+	<insert id="qnaWrite" parameterType="qnaVO">
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,0,0,7)
 	</insert>
 	
 	<select id="qnaContent" parameterType="Integer" resultType="qnaVO">
@@ -37,4 +37,11 @@
 		delete from QNA where q_Num=#{q_Num}
 	</delete>
 	
+	<update id="upPosition" parameterType="qnaVO">
+		update QNA set q_Position=q_Position+1 where q_Num=#{q_Num}
+	</update>
+	
+	<insert id="qnaReply" parameterType ="qnaVO" >
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,#{q_Dept}+1,#{q_Position}+1,7)
+	</insert>
 </mapper>	

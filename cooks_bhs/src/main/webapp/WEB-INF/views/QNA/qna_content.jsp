@@ -67,8 +67,10 @@
 					<br>
 
 					<div class="panel panel-default">
-					<input type="hidden" name="pageNum" value="${pageNum}"> 
-					<input type="hidden" id="q_Num" value="${qnaVO.q_Num}">
+					<input type="hidden" name="pageNum" value="${pageNum}">
+					<input type="hidden" name="q_Dept" value="${qnaVO.q_Dept}">
+    				<input type="hidden" name="q_Position" value="${qnaVO.q_Position}">
+					<input type="hidden" id="f_Num" value="${qnaVO.f_Num}">
 						<div class="panel-heading">
 							<h4>${qnaVO.q_Title}</h4>
 							<label for="id">글쓴이 : </label> ${qnaVO.id} <br>
@@ -78,7 +80,7 @@
 							<div id="inlineFooter" style="float: right">
 								<a href="QNAupdateForm.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 수정</a> .  
 								<a href="QNADelete.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 삭제</a> .  
-								<a href="/cooks/QNAreplyForm.app">답글달기</a> .
+								<a href="QNAreplyForm.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">답글달기</a> .
 								<a href="QNAlist.app?pageNum=${pageNum}">목록으로</a>
 							</div>
 						</div>

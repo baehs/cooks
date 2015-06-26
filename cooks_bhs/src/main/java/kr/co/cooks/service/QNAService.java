@@ -16,7 +16,6 @@ public class QNAService {
 	@Autowired QNADao qnaDao;
 	@Autowired Page page;
 	QNAVO qnaVO;
-	ModelAndView mav = new ModelAndView();
 	List<QNAVO> qnaList;
 	
 	public HashMap<String,Object> qnalist(int pageNum) {
@@ -49,15 +48,12 @@ public class QNAService {
 	   return hm;
 	}
 	
-	public void qnaWrite(QNAVO qnaVO, String userId){
-		HashMap<String, Object> param = new HashMap<>();
-		param.put("qnaVO", qnaVO);
-		param.put("userId", userId);
+	public void qnaWrite(QNAVO qnaVO){
 		
-		qnaDao.qnaWrite(param);
+		qnaDao.qnaWrite(qnaVO);
 	}
 	
-	public QNAVO qnaContent(int q_Num, QNAVO qnaVO){
+	public QNAVO qnaContent(int q_Num){
 		return qnaDao.qnaContent(q_Num);
 	}
 	
@@ -73,4 +69,11 @@ public class QNAService {
 	public void qnaDelete(int q_Num){
 		qnaDao.qnaDelete(q_Num);
 	}
+	
+	public void qnaReply(QNAVO qnaVO){
+		qnaDao.upPosition(qnaVO);
+		qnaDao.qnaReply(qnaVO);
+	}
+	
+	
 }

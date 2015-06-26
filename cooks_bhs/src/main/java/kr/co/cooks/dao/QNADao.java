@@ -9,10 +9,11 @@ import kr.co.cooks.vo.QNAVO;
 public interface QNADao {
 	public int getQNACount();
 	public List<QNAVO> getQNA(HashMap<String, Integer> pageing);
-	public void qnaWrite(HashMap<String, Object> param);
+	public void qnaWrite(QNAVO qnaVO);
 	public QNAVO qnaContent(int q_Num);
 	public QNAVO getQNAUpdate(int q_Num);
 	public void qnaUpdate(QNAVO qnaVO);
 	public void qnaDelete(int q_Num);
-	
+	public void upPosition(QNAVO qnaVO);
+	public void qnaReply(QNAVO qnaVO);
 }

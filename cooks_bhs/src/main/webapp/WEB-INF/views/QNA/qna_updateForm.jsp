@@ -28,6 +28,7 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
+    <script src="qna/qna_updateForm.js"></script>
 </head>
 
 <body>
@@ -66,8 +67,7 @@
 					<h2 class="sub-header">Q&A</h2>
 				
 			<div>
-				<form action="/cooks/QNAUpdate.app" method="post">
-				<input type="hidden" name="q_Num" value="${qnaVO.q_Num}">
+				<form>
 				<input type="hidden" name="pageNum" value="${pageNum}">
 					<div class="form-group">
 						<label for="exampleInputEmail1">${loginUser.name}</label>
@@ -84,7 +84,7 @@
 					</div>
 					<table>
 						<tr>
-				<td><input type="submit" value="글쓰기"></td>
+				<td><input type="button" id="qnaUpdateBnt" value="글쓰기"></td>
 				<td><input type="reset" value="글쓰기취소"></td>
 			</tr>
 					</table>

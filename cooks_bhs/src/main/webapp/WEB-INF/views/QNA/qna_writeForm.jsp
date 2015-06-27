@@ -28,7 +28,7 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
-    
+    <script src="qna/qna_writeForm.js"></script>
     
 </head>
 
@@ -68,9 +68,8 @@
 					<h2 class="sub-header">Q&A</h2>
 				
 			<div>
-				<form action="/cooks/QNAWrite.app" method="post">
+				<form>
 				<input type="hidden" name="pageNum" id="pageNum" value="${pageNum}">
-				<input type="hidden" name="userId" value="${loginUser.id}">
 					<div class="form-group">
 						<label for="id">글쓴이 : </label> ${loginUser.name}
 						<hr>
@@ -88,19 +87,15 @@
 				
 					<table>
 						<tr>
-				<td><input type="submit" value="글쓰기"></td>
-				<td><input type="reset" value="글쓰기취소"></td>
-			</tr>
+							<td><input type="button" id="qnaWriteBtn" value="글쓰기"></td>
+							<td><input type="reset" value="글쓰기취소"></td>
+						</tr>
 					</table>
 					
 				</form>
 				
 				</div>	
-				
-						
-						<!-- Button trigger modal -->
-<!-- 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeForm" data-backdrop="static">글쓰기</button> -->
-					</div>
+			</div>
 
 				</div>
 				<!--/row-->

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.co.cooks.service.QNAService;
 import kr.co.cooks.vo.QNAVO;
+import kr.co.cooks.vo.UserVO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,12 +54,18 @@ public class QNAControl {
 	}
 	
 	@RequestMapping(value="/QNAWrite.app")
-	public String QNAWrite(@ModelAttribute QNAVO qnaVO, 
-							@RequestParam String userId, int pageNum){
+	public ModelAndView QNAWrite(@ModelAttribute QNAVO qnaVO, 
+							HttpSession session, int pageNum){
 		
-		qnaVO.setId(userId);
+		UserVO userVO = (UserVO)session.getAttribute("loginUser");
+		qnaVO.setId(userVO.getId());
 		qnaService.qnaWrite(qnaVO);
-		return "redirect:/QNAlist.app?pageNum="+pageNum;
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
+		return mav;
 	}
 	
 	@RequestMapping(value="/QNAContent.app")
@@ -86,9 +93,11 @@ public class QNAControl {
 	
 	@RequestMapping(value="/QNAUpdate.app")
 	public ModelAndView QNAUpdate(QNAVO qnaVO, @RequestParam String pageNum){
+		
 		ModelAndView mav = new ModelAndView();
 		qnaService.qnaUpdate(qnaVO);
-		mav.setViewName("redirect:/QNAContent.app?q_Num="+qnaVO.getQ_Num()+"&pageNum="+pageNum);
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
 		return mav;
 	}
 	
@@ -106,9 +115,13 @@ public class QNAControl {
 								@RequestParam int pageNum,
 								@RequestParam int q_Num) {
 		
+		qnaVO.setQ_Position(q_Num);
+		qnaVO.setQ_Dept(1);
+		
 		System.out.println("qnaVO : " +qnaVO);
-		System.out.println("qnaVO : " +pageNum);
-		System.out.println("qnaVO : " +q_Num);
+		System.out.println("페이지번호 : " +pageNum);
+		System.out.println("글번호 : " +q_Num);
+		System.out.println("qnaVO getQ_Position : " +qnaVO.getQ_Position());
 		System.out.println("qnaVO getQ_Dept : " +qnaVO.getQ_Dept());
 		
 		ModelAndView mav = new ModelAndView();

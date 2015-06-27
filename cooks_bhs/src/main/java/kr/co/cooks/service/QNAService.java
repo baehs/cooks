@@ -71,7 +71,6 @@ public class QNAService {
 	}
 	
 	public void qnaReply(QNAVO qnaVO){
-		qnaDao.upPosition(qnaVO);
 		qnaDao.qnaReply(qnaVO);
 	}
 	

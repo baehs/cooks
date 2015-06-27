@@ -11,12 +11,12 @@
 	<select id="getQNA" parameterType="HashMap" resultType="qnaVO">
 		select * 
 		from (select rownum rm, human.* from
-			(select q_Num, id, q_Title, q_Date, q_Dept from QNA order by q_Num desc) human)
+			(select q_Num, id, q_Title, q_Date, q_Dept, q_Position from QNA order by q_Position desc) human)
 			where rm between #{startRow} and #{endRow}
 	</select>
 	
 	<insert id="qnaWrite" parameterType="qnaVO">
-		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,0,0,7)
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,0,qna_seq.currval,7)
 	</insert>
 	
 	<select id="qnaContent" parameterType="Integer" resultType="qnaVO">
@@ -37,11 +37,7 @@
 		delete from QNA where q_Num=#{q_Num}
 	</delete>
 	
-	<update id="upPosition" parameterType="qnaVO">
-		update QNA set q_Position=q_Position+1 where q_Num=#{q_Num}
-	</update>
-	
 	<insert id="qnaReply" parameterType ="qnaVO" >
-		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,#{q_Dept}+1,#{q_Position}+1,7)
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,#{q_Dept},#{q_Position},7)
 	</insert>
 </mapper>	

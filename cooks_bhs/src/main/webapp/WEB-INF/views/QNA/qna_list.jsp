@@ -71,17 +71,29 @@
 								<tr>
 									<th style="width: 10%;">번호</th>
 									<th>제 목</th>
-									<th style="width: 15%;">날짜</th>
 									<th style="width: 15%;">작성자</th>
+									<th style="width: 15%;">날짜</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="qnaVO" items="${qnaList}">
 									<tr>
 										<td><c:out value="${qnaVO.q_Num}"/></td>
-										<td><a href="/cooks/QNAContent.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">${qnaVO.q_Title}</a></td>
-<%-- 										<td>${noticeVO.no_Title}</td> --%>
-<%-- 										<td>${loginUser.name}</td> --%>
+<%-- 										<td><a href="/cooks/QNAContent.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">${qnaVO.q_Title}</a></td> --%>
+
+										<td>
+											<c:if test="${qnaVO.q_Dept == 1}">
+												<img src="images/A.jpg" width="40" height="15">
+											</c:if> 
+											<c:if test="${qnaVO.q_Dept == 0}">
+												<img src="images/Q.gif" width="15" height="15">
+											</c:if> 
+											
+												<a href="/cooks/QNAContent.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">${qnaVO.q_Title}</a>
+										</td>
+
+
+
 										<td>${qnaVO.id}</td>
 										<td>${qnaVO.q_Date}</td>
 									</tr>

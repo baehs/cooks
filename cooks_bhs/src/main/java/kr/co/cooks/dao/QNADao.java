@@ -14,6 +14,5 @@ public interface QNADao {
 	public QNAVO getQNAUpdate(int q_Num);
 	public void qnaUpdate(QNAVO qnaVO);
 	public void qnaDelete(int q_Num);
-	public void upPosition(QNAVO qnaVO);
 	public void qnaReply(QNAVO qnaVO);
 }

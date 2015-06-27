@@ -78,9 +78,13 @@
 						<div class="panel-body">${qnaVO.q_Content}</div>
 						<div class="panel-footer" style="padding-bottom: 30px;">
 							<div id="inlineFooter" style="float: right">
+							<c:if test="${qnaVO.id == loginUser.id}">
 								<a href="QNAupdateForm.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 수정</a> .  
-								<a href="QNADelete.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 삭제</a> .  
+								<a href="QNADelete.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 삭제</a> . 
+							</c:if>
+							<c:if test="${(loginUser.user_Level == 1 || loginUser.user_Level == 2) && qnaVO.q_Dept == 0}">
 								<a href="QNAreplyForm.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">답글달기</a> .
+							</c:if>
 								<a href="QNAlist.app?pageNum=${pageNum}">목록으로</a>
 							</div>
 						</div>

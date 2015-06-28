@@ -28,6 +28,7 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
+    <script src="qna/qna_replywriteForm.js"></script>
     
     
 </head>
@@ -68,39 +69,35 @@
 					<h2 class="sub-header">Q&A</h2>
 				
 			<div>
-			
-				<form action="/cooks/QuestionReply.app" method="post">
-				<input type="hidden" id="q_Num" value="${q_Num}">
-				<input type="hidden" name="pageNum" value="${pageNum}">                 
-   				<input type="hidden" name="q_Dept" value="${qnaVO.q_Dept}">
-    			<input type="hidden" name="q_Position" value="${qnaVO.q_Position}">
-    			<input type="hidden" id="f_Num" value="${qnaVO.f_Num}">
-				<input type="hidden" name="userId" value="${loginUser.id}">
-					<div class="form-group">
-						<label for="id">글쓴이 : </label> ${loginUser.name}
-						<hr>
-					</div>
-				
-					<div class="form-group">
-						<label for="exampleInputEmail1">제 목</label>
-						<input type="text" class="form-control" id="q_Title" name="q_Title" placeholder="제목을 입력하세요.">
-					</div>
-					
-					<div class="form-group">
-						<label for="exampleInputEmail1">내 용</label>
-						<textarea class="form-control" rows="3" cols="7" id="q_Content" name="q_Content" placeholder="내용을 입력하세요."></textarea>
-					</div>
-				
-					<table>
-						<tr>
-				<td><input type="submit" value="글쓰기"></td>
-				<td><input type="reset" value="글쓰기취소"></td>
-			</tr>
-					</table>
-					
-				</form>
-				
-				</div>	
+
+						<form>
+							<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+							<input type="hidden" id="q_Num" value="${q_Num}">
+							<div class="form-group">
+								<label for="id">글쓴이 : </label> ${loginUser.name}
+								<hr>
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">제 목</label> 
+								<input type="text" class="form-control" id="q_Title" name="q_Title" placeholder="제목을 입력하세요.">
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">내 용</label>
+								<textarea class="form-control" rows="3" cols="7" id="q_Content" name="q_Content" placeholder="내용을 입력하세요."></textarea>
+							</div>
+
+							<table>
+								<tr>
+									<td><input type="button" id="qnaReplyWriteBtn" value="글쓰기"></td>
+									<td><input type="reset" value="글쓰기취소"></td>
+								</tr>
+							</table>
+
+						</form>
+
+					</div>	
 						
 						<!-- Button trigger modal -->
 <!-- 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeForm" data-backdrop="static">글쓰기</button> -->
@@ -133,17 +130,6 @@
     <!-- /.container -->
     
 <jsp:include page="../common/sign_modal.jsp"/>
-    
-    <script type="text/javascript">
-    
-    $(function() {
-    	
-    	console.log("QNA q_Num 정보 : ", ${q_Num} );
-    	console.log("QNA q_Dept 정보 : ", ${q_Dept} );
-    	console.log("QNA q_Position 정보 : ", ${q_Position} );
-    	console.log("QNA pageNum 정보 : ", ${pageNum} );
-    });
-    </script>
     
 </body>
 </html>

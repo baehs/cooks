@@ -25,7 +25,6 @@ public class QNAControl {
 	
 	@Autowired QNAService qnaService;
 	QNAVO qnaVO;
-	ModelAndView mav = new ModelAndView();
 	
 	@RequestMapping(value = "/QNAlist.app")
 	public ModelAndView list(@RequestParam(defaultValue ="1") int pageNum, HttpSession session) {
@@ -65,6 +64,7 @@ public class QNAControl {
 		
 		mav.addObject("status", "success");
 		mav.setViewName("JSON");
+		
 		return mav;
 	}
 	
@@ -83,6 +83,8 @@ public class QNAControl {
 	
 	@RequestMapping(value="/QNAupdateForm.app")
 	public ModelAndView QNAupdateForm(@RequestParam int q_Num, @RequestParam int pageNum){
+		//System.out.println(qnaVO);
+		
 		ModelAndView mav = new ModelAndView();
 		qnaVO=qnaService.getQNAUpdate(q_Num);
 		mav.addObject("pageNum", pageNum);
@@ -92,12 +94,19 @@ public class QNAControl {
 	}
 	
 	@RequestMapping(value="/QNAUpdate.app")
-	public ModelAndView QNAUpdate(QNAVO qnaVO, @RequestParam String pageNum){
+	public ModelAndView QNAUpdate(@ModelAttribute QNAVO qnaVO, @RequestParam int pageNum){
 		
+		System.out.println("update 요청은 제대로 들어옴");
+		System.out.println("QNAVO :::::::: " +qnaVO);
 		ModelAndView mav = new ModelAndView();
+		
 		qnaService.qnaUpdate(qnaVO);
+		
+		mav.addObject("q_Num", qnaVO.getQ_Num());
+		mav.addObject("pageNum", pageNum);
 		mav.addObject("status", "success");
 		mav.setViewName("JSON");
+		
 		return mav;
 	}
 	
@@ -111,42 +120,38 @@ public class QNAControl {
 	}
 	
 	@RequestMapping(value="/QNAreplyForm.app")
-	public ModelAndView replyForm(@ModelAttribute QNAVO qnaVO,
-								@RequestParam int pageNum,
-								@RequestParam int q_Num) {
-		
-		qnaVO.setQ_Position(q_Num);
-		qnaVO.setQ_Dept(1);
-		
-		System.out.println("qnaVO : " +qnaVO);
-		System.out.println("페이지번호 : " +pageNum);
-		System.out.println("글번호 : " +q_Num);
-		System.out.println("qnaVO getQ_Position : " +qnaVO.getQ_Position());
-		System.out.println("qnaVO getQ_Dept : " +qnaVO.getQ_Dept());
+	public ModelAndView replyForm(@RequestParam int pageNum, int q_Num) {
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("pageNum", pageNum);
 		mav.addObject("q_Num", q_Num);
-		mav.addObject("qnaVO", qnaVO);
 		mav.setViewName("QNA/qna_replyForm");
 		return mav;
 	}
 	
 	@RequestMapping(value="/QuestionReply.app")
 	public ModelAndView QNAreply(@RequestParam int pageNum,
-								@RequestParam String userId,
-								@ModelAttribute QNAVO qnaVO) {
-
+								 @ModelAttribute QNAVO qnaVO,
+								 HttpSession session) {
+		
 		System.out.println("페이지요청 : "+pageNum);
 		System.out.println("요청 : "+qnaVO);
+		UserVO userVO = (UserVO)session.getAttribute("loginUser");
 		
-		qnaVO.setId(userId);
+		qnaVO.setId(userVO.getId());
+		qnaVO.setQ_Position(qnaVO.getQ_Num());
+		qnaVO.setQ_Dept(1);
 		System.out.println("set 한 후에 요청 : "+qnaVO);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		qnaService.qnaReply(qnaVO);
-		mav.setViewName("redirect:/QNAlist.app?pageNum="+pageNum);
+		
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("q_Num", qnaVO.getQ_Num());
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
 		return mav;
 	}
 	

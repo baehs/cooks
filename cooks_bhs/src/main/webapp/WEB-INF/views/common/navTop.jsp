@@ -57,7 +57,7 @@
                         <a href="NoticeList.app">공지사항</a>
                     </li>
                     <li>
-                        <a href="#">음식후기</a>
+                        <a href="QNAlist.app">음식후기</a>
                     </li>
                 </ul>
             </div>

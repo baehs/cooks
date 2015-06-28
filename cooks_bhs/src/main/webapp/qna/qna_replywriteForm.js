@@ -1,20 +1,20 @@
 $(function () {
 	
-	$('#qnaUpdateBnt').click(function() {
-		
+	$('#qnaReplyWriteBtn').click(function() {
+
 		if($("#q_Title").val() == "" || $("#q_Content").val() == "") {
 			alert("제목 또는 내용을 입력하세요.");
-		} else {
-			updateQnA();
-		}
+		}else {
+			QNAreply();
+		} 
 	}); // click()
 }); // $function()
 
-function updateQnA() {
+function QNAreply(){
 	
 	$.ajax({
 		type: "POST",
-		url: "/cooks/QNAUpdate.app",
+		url: "/cooks/QuestionReply.app",
 		async: true,
 		dataType: "json",
 		data: {
@@ -25,8 +25,9 @@ function updateQnA() {
 		},
 		
 		success : function(data) {
+			
 			if(data.status == 'success') {
-				location.href = "/cooks/QNAContent.app?q_Num="+data.q_Num+"&pageNum="+data.pageNum
+				location.href = "/cooks/QNAlist.app?q_Num="+data.q_Num+"&pageNum="+data.pageNum
 			} 
 	
 		},
@@ -35,5 +36,7 @@ function updateQnA() {
 			alert("error html = " + xhr.statusText);
 		} // error
 	}); // ajax
-	
-}
+}	
+
+
+

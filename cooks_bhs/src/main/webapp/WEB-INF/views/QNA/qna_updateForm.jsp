@@ -68,7 +68,8 @@
 				
 			<div>
 				<form>
-				<input type="hidden" name="pageNum" value="${pageNum}">
+				<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
+				<input type="hidden" id="q_Num" name="q_Num" value="${qnaVO.q_Num}">
 					<div class="form-group">
 						<label for="exampleInputEmail1">${loginUser.name}</label>
 					</div>

@@ -15,8 +15,8 @@
 			where rm between #{startRow} and #{endRow}
 	</select>
 	
-	<insert id="noticeWrite" parameterType="HashMap">
-		insert into notice_board values(notice_seq.nextval,#{userId},#{noticeVO.no_Title},#{noticeVO.no_Content},sysdate,0)
+	<insert id="noticeWrite" parameterType="noticeVO">
+		insert into notice_board values(notice_seq.nextval,#{id},#{no_Title},#{no_Content},sysdate,0)
 	</insert>
 	
 	<update id="noticeHit" parameterType="Integer">

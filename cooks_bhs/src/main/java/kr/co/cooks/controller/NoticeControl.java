@@ -53,17 +53,33 @@ public class NoticeControl {
 	}
 	
 	@RequestMapping(value="/NoticeWriteForm.app")
-	public ModelAndView NoticeWriteForm(HttpSession session, HttpServletResponse res){
+	public ModelAndView NoticeWriteForm(int pageNum){
+		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("pageNum", pageNum);
 		mav.setViewName("board_notice/notice_writeForm");
+		
 		return mav;
 	}
 	
 	@RequestMapping(value="/NoticeWrite.app")
-	public String NoticeWrite(@ModelAttribute NoticeVO noticeVO, @RequestParam String userId, HttpSession session){
-		noticeVO.setId((String)session.getAttribute("id"));
-		noticeService.noticeWrite(noticeVO, userId);
-		return "redirect:/NoticeList.app?pageNum="+1;
+	public ModelAndView NoticeWrite(@ModelAttribute NoticeVO noticeVO, 
+									HttpSession session, int pageNum){
+	
+		UserVO userVO = ((UserVO)session.getAttribute("loginUser"));
+		noticeVO.setId(userVO.getId());
+		System.out.println(noticeVO);
+		
+		noticeService.noticeWrite(noticeVO);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
+		
+		return mav;
+		//return "redirect:/NoticeList.app?pageNum="+1;
 	}
 	
 	@RequestMapping(value="/NoticeContent.app")
@@ -105,10 +121,18 @@ public class NoticeControl {
 	}
 	
 	@RequestMapping(value="/NoticeUpdate.app")
-	public ModelAndView NoticeUpdate(NoticeVO noticeVO, @RequestParam String pageNum){
+	public ModelAndView NoticeUpdate(@ModelAttribute NoticeVO noticeVO, @RequestParam int pageNum){
 		ModelAndView mav = new ModelAndView();
+		
 		noticeService.noticeUpdate(noticeVO);
-		mav.setViewName("redirect:/NoticeContent.app?no_Num="+noticeVO.getNo_Num()+"&pageNum="+pageNum);
+		
+		System.out.println(noticeVO);
+		
+		mav.addObject("no_Num", noticeVO.getNo_Num());
+		mav.addObject("pageNum", pageNum);
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
+		
 		return mav;
 	}
 	

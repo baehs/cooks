@@ -28,7 +28,7 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
-    
+    <script src="notice/notice_writeForm.js"></script>
     
 </head>
 
@@ -68,9 +68,8 @@
 					<h2 class="sub-header">공지사항</h2>
 				
 			<div>
-				<form action="/cooks/NoticeWrite.app" method="post">
+				<form>
 				<input type="hidden" name="pageNum" id="pageNum" value="${pageNum}">
-				<input type="hidden" name="userId" value="${loginUser.id}">
 					<div class="form-group">
 						<label for="id">글쓴이 : </label> ${loginUser.name}
 						<hr>
@@ -78,21 +77,16 @@
 				
 					<div class="form-group">
 						<label for="exampleInputEmail1">제 목</label>
-						<input type="text" class="form-control" id="no_Title" name="no_Title" placeholder="title">
+						<input type="text" class="form-control" id="no_Title" name="no_Title" placeholder="제목을 입력하세요.">
 					</div>
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">내 용</label>
 						<textarea class="form-control" rows="3" cols="7" id="no_Content" name="no_Content" placeholder="내용을 입력하세요."></textarea>
 					</div>
-					
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="exampleInputFile">조회수</label> -->
-<!-- 						<input type="number" class="form-control" id="no_Hit" name="no_Hit" placeholder="HIT"> -->
-<!-- 					</div> -->
 					<table>
 						<tr>
-				<td><input type="submit" value="글쓰기"></td>
+				<td><input type="button" id="noticeWriteBtn" value="글쓰기"></td>
 				<td><input type="reset" value="글쓰기취소"></td>
 			</tr>
 					</table>

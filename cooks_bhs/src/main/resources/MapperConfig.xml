@@ -8,6 +8,7 @@
 		<typeAlias alias="reviewVO" type="kr.co.cooks.vo.ReviewVO"/>
 		<typeAlias alias="noticeVO" type="kr.co.cooks.vo.NoticeVO"/>
 		<typeAlias alias="qnaVO" type="kr.co.cooks.vo.QNAVO"/>
+		<typeAlias alias="AddRestaurantVO" type="kr.co.cooks.vo.AddRestaurantVO"/>
 	</typeAliases>
 	
 </configuration>

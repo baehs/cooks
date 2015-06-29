@@ -51,12 +51,8 @@ public class NoticeService {
 		return hm;
 	}
 	
-	public void noticeWrite(NoticeVO noticeVO, String userId){
-		HashMap<String, Object> param = new HashMap<>();
-		param.put("noticeVO", noticeVO);
-		param.put("userId", userId);
-		
-		noticeDao.noticeWrite(param);
+	public void noticeWrite(NoticeVO noticeVO){
+		noticeDao.noticeWrite(noticeVO);
 	}
 	
 	

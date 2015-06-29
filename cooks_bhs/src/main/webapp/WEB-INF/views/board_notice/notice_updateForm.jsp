@@ -28,6 +28,7 @@
 	<script src="community/js/community.js"></script>
     <script src="common/js/common.js"></script>
     <script src="common/js/signUp.js"></script>
+    <script src="notice/notice_updateForm.js"></script>
 </head>
 
 <body>
@@ -66,9 +67,9 @@
 					<h2 class="sub-header">공지사항</h2>
 				
 			<div>
-				<form action="/cooks/NoticeUpdate.app" method="post">
-				<input type="hidden" name="no_Num" value="${noticeVO.no_Num}">
-				<input type="hidden" name="pageNum" value="${pageNum}">
+				<form>
+				<input type="hidden" id="no_Num" name="no_Num" value="${noticeVO.no_Num}">
+				<input type="hidden" id="pageNum" name="pageNum" value="${pageNum}">
 					<div class="form-group">
 						<label for="exampleInputEmail1">${loginUser.name}</label>
 					</div>
@@ -84,7 +85,7 @@
 					</div>
 					<table>
 						<tr>
-				<td><input type="submit" value="글쓰기"></td>
+				<td><input type="button" id="noticeUpdateBnt" value="글쓰기"></td>
 				<td><input type="reset" value="글쓰기취소"></td>
 			</tr>
 					</table>

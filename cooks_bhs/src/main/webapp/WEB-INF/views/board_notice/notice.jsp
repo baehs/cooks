@@ -92,7 +92,7 @@
 						</table>
 						
 						<c:if test="${userLevel == 2}"> 
- 							<a href="/cooks/NoticeWriteForm.app">글쓰기</a> 
+ 							<a href="/cooks/NoticeWriteForm.app?pageNum=${pageNum}">글쓰기</a> 
  						</c:if>
 						
 						

@@ -83,8 +83,6 @@ public class QNAControl {
 	
 	@RequestMapping(value="/QNAupdateForm.app")
 	public ModelAndView QNAupdateForm(@RequestParam int q_Num, @RequestParam int pageNum){
-		//System.out.println(qnaVO);
-		
 		ModelAndView mav = new ModelAndView();
 		qnaVO=qnaService.getQNAUpdate(q_Num);
 		mav.addObject("pageNum", pageNum);
@@ -95,13 +93,10 @@ public class QNAControl {
 	
 	@RequestMapping(value="/QNAUpdate.app")
 	public ModelAndView QNAUpdate(@ModelAttribute QNAVO qnaVO, @RequestParam int pageNum){
-		
-		System.out.println("update 요청은 제대로 들어옴");
-		System.out.println("QNAVO :::::::: " +qnaVO);
+	
 		ModelAndView mav = new ModelAndView();
 		
 		qnaService.qnaUpdate(qnaVO);
-		
 		mav.addObject("q_Num", qnaVO.getQ_Num());
 		mav.addObject("pageNum", pageNum);
 		mav.addObject("status", "success");

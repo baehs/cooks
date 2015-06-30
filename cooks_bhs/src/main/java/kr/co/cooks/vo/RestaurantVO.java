@@ -1,6 +1,6 @@
 package kr.co.cooks.vo;
 
-public class AddRestaurantVO {
+public class RestaurantVO {
 	
 	private String r_Num;
 	private String r_Name;

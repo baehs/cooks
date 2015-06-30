@@ -61,14 +61,15 @@
 			<div class="form-group">
 				<label for="resName" class="col-sm-2 control-label">상호명</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="resName">
+					<input type="text" class="form-control" id="r_Name" name="r_Name">
 				</div>
 			</div>
+			
 			
 			<div class="form-group">
 				<label for="resNumber" class="col-sm-2 control-label">사업자등록번호</label>
 				<div class="col-sm-4">		
-					<input type="text" class="form-control" id="resNumber">
+					<input type="text" class="form-control" id="r_Num" name="r_Num">
 				</div>
 				<button type="submit" class="btn btn-default">중복확인</button>
 							
@@ -77,56 +78,65 @@
 			<div class="form-group">
 				<label for="address" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-4">					
-					<input type="text" class="form-control" id="address">						
+					<input type="text" class="form-control" id="r_Adress" name="r_Adress">						
 				</div>
 			</div>
 			
+			
 			<div class="form-group">
-			<label for="phone" class="col-sm-2 control-label">연락처</label>
-			<div class="form-inline col-sm-4">
-					<input type="text" class="form-control" size="2" id="phone" value="010"> - 
-					<input type="text" class="form-control" size="3" id="phone"> - 
-					<input type="text" class="form-control" size="3" id="phone">
+			<label for="phone" class="col-sm-2 control-label">연락처</label> 예시)02-123-4567
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="r_Phone" name="r_Phone">
+<!-- 					<input type="text" class="form-control" size="2" id="r_Phone" value="010"> -  -->
+<!-- 					<input type="text" class="form-control" size="3" id="r_Phone"> -  -->
+<!-- 					<input type="text" class="form-control" size="3" id="r_Phone"> -->
 				</div>
-				
 			</div>
 			
 			
 			<div class="form-group">
 				<label for="foodType" class="col-sm-2 control-label">음식유형</label>
 				<div class="col-sm-4">
-					<label class="checkbox-inline">
-					  <input type="checkbox" id="foodType" value="option1"> 한식
-					</label>
-					<label class="checkbox-inline">
-					  <input type="checkbox" id="foodType" value="option2"> 중식
-					</label>
-					<label class="checkbox-inline">
-					  <input type="checkbox" id="foodType" value="option3"> 일식
-					</label>
-					<label class="checkbox-inline">
-					  <input type="checkbox" id="foodType" value="option4"> 양식
-					</label>
-					<label class="checkbox-inline">
-					  <input type="checkbox" id="foodType" value="option5"> 분식
-					</label>
+					<input type="text" class="form-control" id="r_Foodtype" name="r_Foodtype">
+<!-- 					<label class="checkbox-inline"> -->
+<!-- 					  <input type="checkbox" id="r_Foodtype" value="option1"> 한식 -->
+<!-- 					</label> -->
+<!-- 					<label class="checkbox-inline"> -->
+<!-- 					  <input type="checkbox" id="r_Foodtype" value="option2"> 중식 -->
+<!-- 					</label> -->
+<!-- 					<label class="checkbox-inline"> -->
+<!-- 					  <input type="checkbox" id="r_Foodtype" value="option3"> 일식 -->
+<!-- 					</label> -->
+<!-- 					<label class="checkbox-inline"> -->
+<!-- 					  <input type="checkbox" id="r_Foodtype" value="option4"> 양식 -->
+<!-- 					</label> -->
+<!-- 					<label class="checkbox-inline"> -->
+<!-- 					  <input type="checkbox" id="r_Foodtype" value="option5"> 분식 -->
+<!-- 					</label> -->
 				</div>
-			</div>			
-			
+			</div>		
 			
 			<div class="form-group">
-				<label for="foodPic" class="col-sm-2 control-label">맛집사진</label>
-				<div class="col-sm-4">
-					<input type="file" id="inputFile">		
-				</div>
-			</div>
+				<label for="info" class="col-sm-2 control-label">식당정보</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" id="r_Info" name="r_Info"></textarea>
+					</div>
+			</div>	
+			
+			
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="foodPic" class="col-sm-2 control-label">맛집사진</label> -->
+<!-- 				<div class="col-sm-4"> -->
+<!-- 					<input type="file" id="inputFile">		 -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			
 			
 			<br>
 			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-danger">맛집 등록하기</button>
+					<input type="button" id="addResBtn" value="맛집 등록하기">
 				</div>
 			</div>
 		</form>

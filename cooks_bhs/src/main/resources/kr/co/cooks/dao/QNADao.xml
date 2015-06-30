@@ -16,7 +16,7 @@
 	</select>
 	
 	<insert id="qnaWrite" parameterType="qnaVO">
-		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,0,qna_seq.currval,7)
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,0,qna_seq.currval,0,15)
 	</insert>
 	
 	<select id="qnaContent" parameterType="Integer" resultType="qnaVO">
@@ -37,7 +37,14 @@
 		delete from QNA where q_Num=#{q_Num}
 	</delete>
 	
+	<delete id="qnaDelete1" parameterType="Integer">
+		delete 
+		from QNA 
+		where q_Position=(select q_Position from QNA where q_Num=#{q_Num})
+		and q_Dept=1
+	</delete>
+	
 	<insert id="qnaReply" parameterType ="qnaVO" >
-		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,#{q_Dept},#{q_Position},7)
+		insert into QNA values(qna_seq.nextval,#{id},#{q_Title},#{q_Content},sysdate,#{q_Dept},#{q_Position},0,15)
 	</insert>
 </mapper>	

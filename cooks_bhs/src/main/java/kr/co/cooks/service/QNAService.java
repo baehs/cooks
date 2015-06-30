@@ -9,6 +9,7 @@ import kr.co.cooks.vo.QNAVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
@@ -66,8 +67,10 @@ public class QNAService {
 		qnaDao.qnaUpdate(qnaVO);
 	}
 	
+	@Transactional
 	public void qnaDelete(int q_Num){
-		qnaDao.qnaDelete(q_Num);
+		qnaDao.qnaDelete1(q_Num);	//Q&A글 삭제하기전에 리플라이글 삭제
+		qnaDao.qnaDelete(q_Num);	//Q&A글 & 리플라이 글 삭제
 	}
 	
 	public void qnaReply(QNAVO qnaVO){

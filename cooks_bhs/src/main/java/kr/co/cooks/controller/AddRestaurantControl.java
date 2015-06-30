@@ -35,9 +35,14 @@ public class AddRestaurantControl {
 		UserVO userVO=(UserVO)session.getAttribute("loginUser");
 		addRestaurantVO.setId(userVO.getId());
 		
+		System.out.println(addRestaurantVO);
+		
 		addRestaurantService.addRestaurant(addRestaurantVO);
 		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("status", "success");
+		mav.setViewName("JSON");
 		
 		return mav;
 	}

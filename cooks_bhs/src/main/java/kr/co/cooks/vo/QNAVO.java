@@ -11,16 +11,8 @@ public class QNAVO {
 	private Timestamp q_Date;
 	private int q_Dept;
 	private int q_Position;
+	private int q_Groupid;
 	private int f_Num;
-	
-	@Override
-	public String toString() {
-		return "QNAVO [q_Num=" + q_Num + ", id=" + id + ", q_Title=" + q_Title
-				+ ", q_Content=" + q_Content + ", q_Date=" + q_Date
-				+ ", q_Dept=" + q_Dept + ", q_Position=" + q_Position
-				+ ", f_Num=" + f_Num + "]";
-	}
-	
 	
 	public int getQ_Num() {
 		return q_Num;
@@ -64,13 +56,24 @@ public class QNAVO {
 	public void setQ_Position(int q_Position) {
 		this.q_Position = q_Position;
 	}
+	public int getQ_Groupid() {
+		return q_Groupid;
+	}
+	public void setQ_Groupid(int q_Groupid) {
+		this.q_Groupid = q_Groupid;
+	}
 	public int getF_Num() {
 		return f_Num;
 	}
 	public void setF_Num(int f_Num) {
 		this.f_Num = f_Num;
 	}
+	@Override
+	public String toString() {
+		return "QNAVO [q_Num=" + q_Num + ", id=" + id + ", q_Title=" + q_Title
+				+ ", q_Content=" + q_Content + ", q_Date=" + q_Date
+				+ ", q_Dept=" + q_Dept + ", q_Position=" + q_Position
+				+ ", q_Groupid=" + q_Groupid + ", f_Num=" + f_Num + "]";
+	}
 	
-	
-
 }

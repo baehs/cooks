@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.cooks.dao.AddRestaurantDao">
 
 	<insert id="addRestaurant" parameterType="addRestaurantVO">
-		insert into RESTAURANT values(r_Num, r_Name, id, r_Adress, r_Phone, r_Foodtype, r_Info)
+		insert into RESTAURANT values(#{r_Num}, #{r_Name}, #{id}, #{r_Adress}, #{r_Phone}, #{r_Foodtype}, #{r_Info})
 	</insert>
 
 </mapper>

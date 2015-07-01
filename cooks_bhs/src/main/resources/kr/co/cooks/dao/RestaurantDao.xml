@@ -4,20 +4,25 @@
 
 <mapper namespace="kr.co.cooks.dao.RestaurantDao">
 
+	<select id="getRestaurant" resultType="restaurantFileListVO">
+		select R1.R_NUM, R1.R_NAME, R1.ID, R1.R_ADDRESS, R1.R_PHONE, R1.R_FOODTYPE, R1.R_INFO,
+				R2.FILE_NUM, R2.ORIGINFILENAME, R2.SAVEFILENAME, R2.FILESIZE
+		FROM RESTAURANT R1 LEFT OUTER JOIN RESTAURANT_FILELIST R2
+		ON R1.R_NUM = R2.R_NUM
+	</select>
+
 	<insert id="addRestaurant" parameterType="restaurantVO">
 		insert into RESTAURANT values(#{r_Num}, #{r_Name}, #{id}, #{r_Adress}, #{r_Phone}, #{r_Foodtype}, #{r_Info})
 	</insert>
 	
 	<insert id="addFileUpload" parameterType="restaurantFileVO">
-		insert into RESTAURANT_FILELIST values(#{file_Num}, #{originFileName}, #{saveFileName}, #{fileSize}, #{r_Num})
+		insert into RESTAURANT_FILELIST values(resfile_num_seq.nextval, #{originFileName}, #{saveFileName}, #{fileSize}, #{r_Num})
 	</insert>
 	
 	<select id="getRestaurantCount" resultType="Integer">
 		select count(*) from RESTAURANT
 	</select>
 	
-	<select id="getRestaurant" resultType="restaurantVO">
-		select r_Name, r_Info from RESTAURANT 
-	</select>
+	
 
 </mapper>

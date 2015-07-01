@@ -1,13 +1,13 @@
 package kr.co.cooks.service;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 
 import kr.co.cooks.dao.RestaurantDao;
+import kr.co.cooks.vo.RestaurantFileListVO;
 import kr.co.cooks.vo.RestaurantFileVO;
 import kr.co.cooks.vo.RestaurantVO;
 
@@ -22,8 +22,12 @@ public class RestaurantService {
 	@Autowired RestaurantDao restaurantDao;
 	@Autowired ServletContext servletContext;
 	
-	RestaurantVO addRestaurantVO;
-	List<RestaurantVO> restaurantlist;
+	public List<RestaurantFileListVO> restaurantList(){
+
+		return restaurantDao.getRestaurant();
+
+	}
+
 	
 	@Transactional()
 	public void addRestaurant(RestaurantVO restaurantVO, MultipartHttpServletRequest multipartReq){
@@ -71,21 +75,7 @@ public class RestaurantService {
 				
 			} // while
 		} // if
-		
 	}
 	
-	public HashMap<String, Object> restaurantList(){
-		
-		HashMap<String, Object> hm = new HashMap<>();
-		int count=0;
-		
-		count = restaurantDao.getRestaurantCount();
-		restaurantlist = restaurantDao.getRestaurant();
-		
-		hm.put("count", count);
-		hm.put("restaurantlist", restaurantlist);
-		
-		return hm;
-	}
 	
 }

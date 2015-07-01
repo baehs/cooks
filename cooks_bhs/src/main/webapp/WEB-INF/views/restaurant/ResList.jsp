@@ -49,7 +49,7 @@
 	<jsp:include page="../common/navTop.jsp"/>
 	
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
 
         <!-- Page Header -->
         <div class="row">
@@ -63,16 +63,16 @@
 
         <!-- Projects Row -->
         <div class="row">
-        	<c:forEach var="addRestaurantVO" items="${restaurantlist}">
-       		<div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="img/babonae.jpg" alt="" style="height:240px;width: 360px;">
-                </a>
-                <h3>
-                    <a href="#">${addRestaurantVO.r_Name}</a>
-                </h3>
-                <p>${addRestaurantVO.r_Info}</p>
-            </div>
+        	<c:forEach var="restaurant" items="${restaurantlist}">
+	       		<div class="col-md-4 portfolio-item">
+	                <a href="#">
+	                    <img class="img-responsive" src="fileUpload/${restaurant.saveFileName}" style="height:240px;width: 360px;">
+	                </a>
+	                <h3>
+	                    <a href="#">${restaurant.r_Name}</a>
+	                </h3>
+	                <p>${restaurant.r_Info}</p>
+	            </div>
            </c:forEach>
         
 

@@ -104,44 +104,6 @@
 						</div>
 					</div>
 					
-					
-<!-- 					<div> -->
-<!-- 						<form> -->
-
-<%-- 							<input type="hidden" name="pageNum" value="${pageNum}"> <input --%>
-<%-- 								type="hidden" id="no_Num" value="${noticeVO.no_Num}"> --%>
-
-<!-- 							<table border="2" width="800" align="center"> -->
-<!-- 								<tr> -->
-<!-- 									<td>글쓴이 :</td> -->
-<%-- 									<td>${noticeVO.id}</td> --%>
-<!-- 									<td>조회수 :</td> -->
-<%-- 									<td>${noticeVO.no_Hit}</td> --%>
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<td>제목 :</td> -->
-<%-- 									<td>${noticeVO.no_Title}</td> --%>
-<!-- 									<td>날짜 :</td> -->
-<%-- 									<td>${noticeVO.no_Date}</td> --%>
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<%-- 									<td colspan="4"><xmp>${noticeVO.no_Content}</xmp></td> --%>
-<!-- 								</tr> -->
-
-<!-- 								<tr> -->
-<!-- 									<td colspan="4" align="right"> -->
-<%-- 									<c:if test="${userLevel == 2}"> --%>
-<%--  											<input type="button" value="수정하기" onclick="document.location.href='/cooks/NoticeupdateForm.app?no_Num=${noticeVO.no_Num}&pageNum=${pageNum}'"> --%>
-<%--  											<input type="button" value="삭제하기" onclick="document.location.href='/cooks/NoticeDelete.app?no_Num=${noticeVO.no_Num}&pageNum=${pageNum}'"> --%>
-<%--  									</c:if>  --%>
-<%--  									<input type="button" value="목록으로" onclick="document.location.href='/cooks/NoticeList.app?pageNum=${pageNum}'"> --%>
-<!-- 									</td> -->
-<!-- 								</tr> -->
-<!-- 							</table> -->
-<!-- 						</form> -->
-
-<!-- 					</div> -->
-					
 				</div>
 
 			</div>

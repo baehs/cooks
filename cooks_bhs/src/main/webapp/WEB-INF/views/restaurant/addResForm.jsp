@@ -14,13 +14,12 @@
     
     <title>Cook's</title>
 
-    <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href='common/css/modalStyle.css' rel='stylesheet'>
-	<link href="css/sb-admin-2.css" rel="stylesheet">
+	<link href="community/css/shop-homepage.css" rel="stylesheet">
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
@@ -37,7 +36,7 @@
 <body>
 
 	<jsp:include page="../common/navTop.jsp"/>
-	
+
 	<!-- Page Content -->
 	<div class="container">
 	<div class="row">
@@ -48,7 +47,7 @@
 		
 		<div class="well bs-component">
 
-				<form class="form-horizontal" action="/cooks/addRestaurant.app" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" name="AddRestaurant" id="AddRestaurant" action="/cooks/AddRestaurant.app" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="resName" class="col-sm-2 control-label">상호명</label>
 						<div class="col-sm-4">
@@ -106,7 +105,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" id="addResBtn" >맛집 등록하기</button>
+							<button type="button" id="addResBtn" >맛집 등록하기</button>
 						</div>
 					</div>
 				</form>

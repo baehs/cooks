@@ -1,11 +1,11 @@
 package kr.co.cooks.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import kr.co.cooks.service.RestaurantService;
+import kr.co.cooks.vo.RestaurantFileListVO;
 import kr.co.cooks.vo.RestaurantVO;
 import kr.co.cooks.vo.UserVO;
 
@@ -26,14 +26,27 @@ public class RestaurantControl {
 	@Autowired RestaurantService restaurantService;
 	RestaurantVO restaurantVO;
 	
-	@RequestMapping(value="/AddRestaurantForm.app")
-	public ModelAndView AddRestaurantForm(){
+	
+	@RequestMapping(value="/RestaurantList.app")
+	public ModelAndView RestaurantList(){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("addRestaurant/addResForm");
+		
+		List<RestaurantFileListVO> restaurantlist = restaurantService.restaurantList();
+		
+		mav.addObject("restaurantlist", restaurantlist);
+		mav.setViewName("restaurant/ResList");
 		return mav;
 	}
 	
-	@RequestMapping(value="/addRestaurant.app", method=RequestMethod.POST)
+
+	@RequestMapping(value="/AddRestaurantForm.app")
+	public ModelAndView AddRestaurantForm(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("restaurant/addResForm");
+		return mav;
+	}
+	
+	@RequestMapping(value="/AddRestaurant.app", method=RequestMethod.POST)
 	public ModelAndView AddRestaurant(@ModelAttribute RestaurantVO restaurantVO,
 									 MultipartHttpServletRequest multipartReq,
 									 HttpSession session){
@@ -48,19 +61,9 @@ public class RestaurantControl {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("addRestaurant/ResList");
+		mav.setViewName("redirect:/RestaurantList.app");
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/RestaurantList.app")
-	public ModelAndView RestaurantList(){
-		ModelAndView mav = new ModelAndView();
-		
-		HashMap<String, Object> hm = restaurantService.restaurantList();
-		
-		mav.addObject("restaurantlist", (List<RestaurantVO>)hm.get("restaurantlist"));
-		mav.setViewName("addRestaurant/ResList");
-		return mav;
-	}
 }

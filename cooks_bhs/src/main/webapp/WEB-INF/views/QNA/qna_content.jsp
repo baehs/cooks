@@ -78,7 +78,7 @@
 						<div class="panel-body">${qnaVO.q_Content}</div>
 						<div class="panel-footer" style="padding-bottom: 30px;">
 							<div id="inlineFooter" style="float: right">
-							<c:if test="${qnaVO.id == loginUser.id}">
+							<c:if test="${qnaVO.id == loginUser.id || loginUser.user_Level == 2}">
 								<a href="QNAupdateForm.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 수정</a> .  
 								<a href="QNADelete.app?q_Num=${qnaVO.q_Num}&pageNum=${pageNum}">게시글 삭제</a> . 
 							</c:if>
